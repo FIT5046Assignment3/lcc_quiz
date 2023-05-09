@@ -30,6 +30,12 @@
         tools:layout="@layout/fragment_recentquiz" />
 
     <activity
+        android:id="@+id/nav_create"
+        android:name="com.fit.quizcrafter.activity.CreatequizActivity"
+        android:label="@string/menu_createquiz"
+        tools:layout="@layout/activity_createquiz" />
+
+    <activity
         android:id="@+id/nav_map"
         android:name="com.fit.quizcrafter.ui.map.MapActivity"
         android:label="@string/menu_map"

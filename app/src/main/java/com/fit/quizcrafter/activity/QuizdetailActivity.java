@@ -37,8 +37,24 @@ public class QuizdetailActivity extends AppCompatActivity {
         new ApiQuiz().getQuiz(getApplicationContext(), "1", null, null, new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
-                System.out.println(result);
                 quiz = Quiz.parseQuiz(result);
+                quiz.setTitle("title");
+                quiz.setDescription("description");
+                TextView view = new TextView(getApplicationContext());
+                view.setText(quiz.getTitle());
+                detailcontainer.addView(view);
+                String description = quiz.getDescription();
+                view = new TextView(getApplicationContext());
+                view.setText(description);
+                detailcontainer.addView(view);
+
+                System.out.println(quiz.getQuestionList());
+                List<Question> questionList = quiz.getQuestionList();
+                System.out.println(questionList.get(0));
+//                for(Question question: questionList)
+//                {
+//                    System.out.println(question);
+//                }
             }
         });
     }

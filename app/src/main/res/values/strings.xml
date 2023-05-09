@@ -11,6 +11,11 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_recentquiz">Recentquiz</string>
+    <string name="menu_createquiz">Create quiz</string>
     <string name="menu_map">Check my map</string>
     <string name="menu_logout">Logout</string>
+
+
+
+    <string name="quiz_checkbok">multiple</string>
 </resources>

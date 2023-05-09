@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".activity.CreatequizActivity">
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input quiz title"
+
+        tools:ignore="MissingConstraints" />
+    <CheckBox
+        android:id="@+id/mulcheckBox"
+        android:layout_width="134dp"
+        android:layout_height="43dp"
+        android:text="@string/quiz_checkbok"
+
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/QuestioneditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input question "
+
+        tools:ignore="MissingConstraints" />
+
+
+
+    <EditText
+        android:id="@+id/OptioneditText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input option "
+
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/OptioneditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input option "
+
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/OptioneditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input option "
+
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/OptioneditText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input option "
+
+        tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/OptioneditText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Please input option "
+
+            tools:ignore="MissingConstraints" />
+
+
+
+
+    <EditText
+        android:id="@+id/AnswereditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input correct answer"
+
+ />
+
+
+
+        <Button
+            android:id="@+id/addQuestionbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+
+        />
+
+
+        <Button
+            android:id="@+id/Addquizbtn"
+            android:layout_width="370dp"
+            android:layout_height="48dp"
+            android:text="Finish"
+
+            />
+
+
+
+
+
+
+
+
+
+</LinearLayout >

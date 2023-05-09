@@ -21,6 +21,10 @@
             android:icon="@drawable/ic_baseline_checklist_24"
             android:title="@string/menu_recentquiz" />
         <item
+            android:id="@+id/nav_create"
+            android:icon="@drawable/ic_baseline_create_24"
+            android:title="@string/menu_createquiz" />
+        <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_baseline_location_on_24"
             android:title="@string/menu_map" />
