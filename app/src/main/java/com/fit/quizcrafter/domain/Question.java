@@ -33,6 +33,8 @@ public class Question {
      }
 
     public Question() {
+        answers = new Answers();
+        correct_answers = new Correct_answers();
     }
 
     public void setQuestion(String question) {

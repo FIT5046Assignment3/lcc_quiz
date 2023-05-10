@@ -55,6 +55,7 @@ public class ApiQuiz {
         {
             realUrl  = realUrl + "?"  + auth;
         }
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, realUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -66,12 +67,8 @@ public class ApiQuiz {
                 System.out.println("error");
             }
         });
-        // Get a RequestQueue
-        RequestQueue queue = VolleyQueue.getInstance(context.getApplicationContext()).
-                getRequestQueue();
-        // ...
-        // Add a request (in this example, called stringRequest) to your RequestQueue.
-        VolleyQueue.getInstance(context).addToRequestQueue(stringRequest);
+
+        RequestQueue queue = VolleyQueue.getInstance(context.getApplicationContext()).getRequestQueue();
         queue.add(stringRequest);
     }
 

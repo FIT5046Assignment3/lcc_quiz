@@ -3,6 +3,7 @@ package com.fit.quizcrafter.domain;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz {
@@ -10,6 +11,9 @@ public class Quiz {
     private String title;
     private String description;
 
+    public Quiz() {
+        questionList = new ArrayList<>();
+    }
 
     public List<Question> getQuestionList() {
         return questionList;
@@ -23,6 +27,10 @@ public class Quiz {
         return title;
     }
 
+    public boolean addQuestion(Question question)
+    {
+        return questionList.add(question);
+    }
     public void setTitle(String title) {
         this.title = title;
     }
@@ -37,7 +45,7 @@ public class Quiz {
 
     public static Quiz parseQuiz(String str)
     {
-        List<Question> list =  new Gson().fromJson(str, new TypeToken<List<Object>>(){}.getType());
+        List<Question> list =  new Gson().fromJson(str, new TypeToken<List<Question>>(){}.getType());
         Quiz quiz = new Quiz();
         quiz.setQuestionList(list);
         return quiz;

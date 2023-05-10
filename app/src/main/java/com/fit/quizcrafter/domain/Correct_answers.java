@@ -59,4 +59,15 @@ public class Correct_answers {
          return answer_f_correct;
      }
 
+    @Override
+    public String toString() {
+        return "Correct_answers{" +
+                "answer_a_correct='" + answer_a_correct + '\'' +
+                ", answer_b_correct='" + answer_b_correct + '\'' +
+                ", answer_c_correct='" + answer_c_correct + '\'' +
+                ", answer_d_correct='" + answer_d_correct + '\'' +
+                ", answer_e_correct='" + answer_e_correct + '\'' +
+                ", answer_f_correct='" + answer_f_correct + '\'' +
+                '}';
+    }
 }

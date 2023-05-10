@@ -59,4 +59,15 @@ public class Answers {
          return answer_f;
      }
 
+    @Override
+    public String toString() {
+        return "Answers{" +
+                "answer_a='" + answer_a + '\'' +
+                ", answer_b='" + answer_b + '\'' +
+                ", answer_c='" + answer_c + '\'' +
+                ", answer_d='" + answer_d + '\'' +
+                ", answer_e='" + answer_e + '\'' +
+                ", answer_f='" + answer_f + '\'' +
+                '}';
+    }
 }
