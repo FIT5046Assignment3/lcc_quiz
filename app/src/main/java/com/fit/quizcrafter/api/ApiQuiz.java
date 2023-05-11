@@ -25,9 +25,6 @@ public class ApiQuiz {
         // Get a RequestQueue
         RequestQueue queue = VolleyQueue.getInstance(context.getApplicationContext()).
                 getRequestQueue();
-        // ...
-        // Add a request (in this example, called stringRequest) to your RequestQueue.
-        VolleyQueue.getInstance(context).addToRequestQueue(stringRequest);
         queue.add(stringRequest);
     }
 

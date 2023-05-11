@@ -17,9 +17,9 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/nav_recent_quiz"
+            android:id="@+id/nav_collection_quiz"
             android:icon="@drawable/ic_baseline_checklist_24"
-            android:title="@string/menu_recentquiz" />
+            android:title="@string/menu_collectionquiz" />
         <item
             android:id="@+id/nav_create"
             android:icon="@drawable/ic_baseline_create_24"

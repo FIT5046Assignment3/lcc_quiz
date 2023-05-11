@@ -114,9 +114,14 @@ public class Question {
          return difficulty;
      }
 
+    public Question(int id, String question) {
+        this.id = id;
+        this.question = question;
+    }
+
     @Override
     public String toString() {
-        return "JsonRootBean{" +
+        return "Question{" +
                 "id=" + id +
                 ", question='" + question + '\'' +
                 ", description='" + description + '\'' +
@@ -130,10 +135,5 @@ public class Question {
                 ", category='" + category + '\'' +
                 ", difficulty='" + difficulty + '\'' +
                 '}';
-    }
-
-    public Question(int id, String question) {
-        this.id = id;
-        this.question = question;
     }
 }

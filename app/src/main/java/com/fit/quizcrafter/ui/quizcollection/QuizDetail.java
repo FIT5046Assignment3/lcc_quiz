@@ -1,25 +1,18 @@
-package com.fit.quizcrafter.ui.recentquiz;
-
-import static com.fit.quizcrafter.data.mockData.recentQuiz;
+package com.fit.quizcrafter.ui.quizcollection;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.fit.quizcrafter.R;
 import com.fit.quizcrafter.databinding.FragmentQuizdetailBinding;
-import com.fit.quizcrafter.databinding.FragmentRecentquizBinding;
+import com.fit.quizcrafter.domain.Quiz;
 import com.fit.quizcrafter.ui.slideshow.SlideshowViewModel;
-import com.fit.quizcrafter.ui.test.testFragment;
+import com.google.gson.Gson;
 
 
 public class QuizDetail extends Fragment {
@@ -33,6 +26,14 @@ public class QuizDetail extends Fragment {
 
         binding = FragmentQuizdetailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        String strquiz= QuizDetailArgs.fromBundle(getArguments()).getQuiz();
+
+        Quiz quiz = new Gson().fromJson(strquiz,Quiz.class);
+        System.out.println(strquiz);
+
+
+
         return root;
     }
 

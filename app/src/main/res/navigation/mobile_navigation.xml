@@ -24,16 +24,16 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
-        android:id="@+id/nav_recent_quiz"
-        android:name="com.fit.quizcrafter.ui.recentquiz.RecentQuiz"
-        android:label="@string/menu_recentquiz"
-        tools:layout="@layout/fragment_recentquiz" />
+        android:id="@+id/nav_collection_quiz"
+        android:name="com.fit.quizcrafter.ui.quizcollection.CollectionQuiz"
+        android:label="@string/menu_collectionquiz"
+        tools:layout="@layout/fragment_collectionquiz" />
 
-    <activity
+    <fragment
         android:id="@+id/nav_create"
-        android:name="com.fit.quizcrafter.activity.CreatequizActivity"
+        android:name="com.fit.quizcrafter.ui.createquiz.CreateQuizFragment"
         android:label="@string/menu_createquiz"
-        tools:layout="@layout/activity_createquiz" />
+        tools:layout="@layout/fragment_createquiz" />
 
     <activity
         android:id="@+id/nav_map"

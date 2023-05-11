@@ -7,13 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.fit.quizcrafter.MainActivity;
-import com.fit.quizcrafter.R;
 import com.fit.quizcrafter.api.RetrofitClient;
 import com.fit.quizcrafter.api.RetrofitWeather;
 import com.fit.quizcrafter.databinding.ActivityWeatherBinding;
+import com.fit.quizcrafter.domain.Question;
+import com.fit.quizcrafter.domain.Quiz;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -25,6 +26,8 @@ public class WeatherActivity extends AppCompatActivity {
     private ActivityWeatherBinding binding;
     private String location;
     private RetrofitWeather retrofitWeather;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +36,6 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(view);
 
         retrofitWeather = RetrofitClient.getRetrofitService();
-
 
         binding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override

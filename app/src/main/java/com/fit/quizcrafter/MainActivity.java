@@ -1,5 +1,11 @@
 package com.fit.quizcrafter;
 
+
+import static com.fit.quizcrafter.api.FirebaseApi.getQuizByuserId;
+import static com.fit.quizcrafter.api.FirebaseApi.initData;
+import static com.fit.quizcrafter.api.FirebaseApi.userId;
+
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -7,9 +13,7 @@ import android.view.Menu;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+//        初始话数据
+        initData(getApplicationContext());
+        getQuizByuserId(userId,null);
+
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_recent_quiz,R.id.nav_create,R.id.nav_map,R.id.nav_logout)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_collection_quiz,R.id.nav_create,R.id.nav_map,R.id.nav_logout)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

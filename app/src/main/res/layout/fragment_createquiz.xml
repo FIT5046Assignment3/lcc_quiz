@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context=".activity.CreatequizActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -72,15 +71,15 @@ tools:context=".activity.CreatequizActivity">
 
         tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/OptioneditText5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Please input option "
+    <EditText
+        android:id="@+id/OptioneditText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please input option "
 
-            tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" />
 
 
 
@@ -93,26 +92,26 @@ tools:context=".activity.CreatequizActivity">
         android:inputType="textPersonName"
         android:text="Please input correct answer"
 
- />
+        />
 
 
 
-        <Button
-            android:id="@+id/addQuestionbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add"
+    <Button
+        android:id="@+id/addQuestionbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
 
         />
 
 
-        <Button
-            android:id="@+id/Addquizbtn"
-            android:layout_width="370dp"
-            android:layout_height="48dp"
-            android:text="Finish"
+    <Button
+        android:id="@+id/Addquizbtn"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:text="Finish"
 
-            />
+        />
 
 
 

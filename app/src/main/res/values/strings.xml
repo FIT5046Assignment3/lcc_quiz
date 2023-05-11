@@ -10,11 +10,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_recentquiz">Recentquiz</string>
+    <string name="menu_collectionquiz">Quiz Collection</string>
     <string name="menu_createquiz">Create quiz</string>
     <string name="menu_map">Check my map</string>
     <string name="menu_logout">Logout</string>
 
 
     <string name="quiz_checkbok">multiple</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

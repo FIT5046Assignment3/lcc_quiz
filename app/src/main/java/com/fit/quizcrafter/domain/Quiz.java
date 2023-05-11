@@ -5,13 +5,15 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Quiz {
     private List<Question> questionList;
     private String title;
-    private String description;
+    private String description = " quiz desciption";
 
     public Quiz() {
+        title = "titile" + String.valueOf(new Random().nextInt());
         questionList = new ArrayList<>();
     }
 
@@ -55,6 +57,8 @@ public class Quiz {
     public String toString() {
         return "Quiz{" +
                 "questionList=" + questionList +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

@@ -1,35 +1,49 @@
-package com.fit.quizcrafter.activity;
+package com.fit.quizcrafter.ui.createquiz;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.fit.quizcrafter.api.FirebaseApi.addQuiz;
+import static com.fit.quizcrafter.api.FirebaseApi.userId;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.fit.quizcrafter.MainActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.fit.quizcrafter.R;
+import com.fit.quizcrafter.databinding.FragmentCollectionquizBinding;
+import com.fit.quizcrafter.databinding.FragmentCreatequizBinding;
 import com.fit.quizcrafter.domain.Question;
 import com.fit.quizcrafter.domain.Quiz;
+import com.fit.quizcrafter.ui.slideshow.SlideshowViewModel;
 
-public class CreatequizActivity extends AppCompatActivity {
+
+public class CreateQuizFragment extends Fragment {
+
+    private FragmentCreatequizBinding binding;
     private Quiz quiz;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createquiz);
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        SlideshowViewModel slideshowViewModel =
+                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        binding = FragmentCreatequizBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
 
 
-        Button btn = findViewById(R.id.addQuestionbtn);
+        Button btn = binding.addQuestionbtn;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Question question = new Question();
-                EditText editText = findViewById(R.id.editTextTextPersonName);
+                EditText editText = binding.editTextTextPersonName;
                 question.setQuestion(editText.getText().toString());
-                CheckBox checkBox = findViewById(R.id.mulcheckBox);
+                CheckBox checkBox = binding.mulcheckBox;
                 Boolean mul =  checkBox.isChecked();
 
                 if(mul)
@@ -42,19 +56,19 @@ public class CreatequizActivity extends AppCompatActivity {
                 }
 
 //              set option
-                editText = findViewById(R.id.OptioneditText1);
+                editText = binding.OptioneditText1;
                 question.getAnswers().setAnswer_a(editText.getText().toString());
 
-                editText = findViewById(R.id.OptioneditText2);
+                editText = binding.OptioneditText2;
                 question.getAnswers().setAnswer_b(editText.getText().toString());
 
-                editText = findViewById(R.id.OptioneditText3);
+                editText = binding.OptioneditText3;
                 question.getAnswers().setAnswer_c(editText.getText().toString());
 
-                editText = findViewById(R.id.OptioneditText4);
+                editText = binding.OptioneditText4;
                 question.getAnswers().setAnswer_d(editText.getText().toString());
 
-                editText = findViewById(R.id.OptioneditText5);
+                editText = binding.OptioneditText5;
                 question.getAnswers().setAnswer_e(editText.getText().toString());
 //                is multiple
                 if(mul)
@@ -85,7 +99,7 @@ public class CreatequizActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    editText = findViewById(R.id.AnswereditText);
+                    editText = binding.AnswereditText;
                     question.setCorrect_answer(editText.getText().toString());
                 }
                 if(quiz == null)
@@ -97,27 +111,32 @@ public class CreatequizActivity extends AppCompatActivity {
                 {
                     quiz.addQuestion(question);
                 }
-                System.out.println(question);
+                System.out.println(quiz);
 //                add question function
+
             }
         });
 
-        findViewById(R.id.Addquizbtn).setOnClickListener(new View.OnClickListener() {
+        binding.Addquizbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("add quiz");
-                EditText text = findViewById(R.id.editTextTextPersonName);
+                EditText text = binding.editTextTextPersonName;
                 quiz.setTitle(text.getText().toString());
-//              data upload
                 System.out.println(quiz);
-
-
-
-                Intent intent = new Intent();
-                intent.setClass(getParent(), MainActivity.class);
-                startActivity(intent);
+                addQuiz(quiz,userId);
             }
         });
-
+        return root;
     }
+
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+
 }
