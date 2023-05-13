@@ -27,12 +27,12 @@
 
 
 
-    <TextView
-        android:id="@+id/accountNameFromDataBase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize = "40sp"/>
+        <TextView
+                android:id="@+id/accountNameFromDataBase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            android:layout_gravity="center"
+                android:textSize = "40sp"/>
 
 
 
@@ -52,13 +52,13 @@
         android:gravity="center"
         android:background="@drawable/draw_polygon_shape"
         >
-        <TextView
-            android:id="@+id/random"
-            android:shape = "rectangle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="random"
-            android:textSize = "20sp"/>
+    <TextView
+        android:id="@+id/random"
+        android:shape = "rectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="random"
+        android:textSize = "20sp"/>
 
         <TextView
             android:id="@+id/quiz"

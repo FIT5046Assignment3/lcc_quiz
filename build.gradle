@@ -8,6 +8,8 @@ buildscript {
 
     }
     dependencies {
+//        not sure to add
+//        classpath 'com.android.tools.build:gradle:7.3.1'
         // Add the dependency for the Google services Gradle plugin
         classpath 'com.google.gms:google-services:4.3.15'
         def nav_version = "2.5.3"
@@ -19,6 +21,7 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.3.1' apply false
     id 'com.android.library' version '7.3.1' apply false
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
 
 

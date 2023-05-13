@@ -1,9 +1,6 @@
 package com.fit.quizcrafter;
 
 
-import static com.fit.quizcrafter.api.FirebaseApi.getQuizByuserId;
-import static com.fit.quizcrafter.api.FirebaseApi.initData;
-import static com.fit.quizcrafter.api.FirebaseApi.userId;
 import static com.fit.quizcrafter.api.RetrofitClient.access_key;
 import static com.fit.quizcrafter.api.RetrofitClient.getRetrofitService;
 
@@ -12,17 +9,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
-import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.fit.quizcrafter.api.FirebaseApi;
 import com.fit.quizcrafter.api.RetrofitWeather;
 import com.fit.quizcrafter.api.VolleyQueue;
 
 import com.fit.quizcrafter.domain.weather.Weather;
+import com.fit.quizcrafter.loginactivity.CreateAccountClass;
+import com.fit.quizcrafter.loginactivity.HomeScreenActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,9 +33,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fit.quizcrafter.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -44,6 +52,22 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+    private FirebaseUser fireBaseUser;
+
+    private FirebaseAuth firebaseAuth;
+
+    private DatabaseReference databaseReference;
+
+    private String UserID;
+
+    private String useForAccountName;
+
+    private TextView textView;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 //        init data for test delete after developed
 //        initData(getApplicationContext());
 //        getQuizByuserId(userId,null);
-
         setSupportActionBar(binding.appBarMain.toolbar);
 //        email icon can be delete later
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -66,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,R.id.nav_collection_quiz,R.id.nav_create,R.id.nav_map,R.id.nav_logout)
                 .setOpenableLayout(drawer)
@@ -134,4 +159,44 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    private void ShowTheAccountName(FirebaseUser fireBaseUser) {
+        UserID = fireBaseUser.getUid();
+
+        //get the user reference
+        databaseReference = FirebaseDatabase.getInstance().getReference("Data entry for create account");
+        databaseReference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                CreateAccountClass createAccountClass = snapshot.getValue(CreateAccountClass.class);
+                if(createAccountClass != null)
+                {
+                    useForAccountName = createAccountClass.accountName;
+                    textView = findViewById(R.id.user_name);
+                    textView.setText(useForAccountName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        fireBaseUser = firebaseAuth.getCurrentUser();
+        if(fireBaseUser == null)
+        {
+            Toast.makeText(getApplicationContext(), "user details is not on database", Toast.LENGTH_LONG).show();
+        }
+        else{
+            ShowTheAccountName(fireBaseUser);
+        }
+        ShowTheAccountName(fireBaseUser);
+    }
 }

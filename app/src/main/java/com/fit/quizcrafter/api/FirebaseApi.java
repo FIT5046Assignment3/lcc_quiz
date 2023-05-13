@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 
 public class FirebaseApi {
-    private static DatabaseReference mDatabase;
+    public static DatabaseReference mDatabase;
 
     public static String userId = "quizId-1";
     public static String collectionName = "create-quiz";

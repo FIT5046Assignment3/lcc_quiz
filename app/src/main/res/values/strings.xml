@@ -1,5 +1,28 @@
 <resources>
-    <string name="app_name">QuizCrafter</string>
+<!--    login -->
+    <string name="app_name">
+       <font color="#4169E1">quiz crafters</font>
+    </string>
+
+
+    <string-array name="genderarray">
+        <item>Male</item>
+        <item>Female</item>
+        <item>unknown</item>
+        <item>other</item>
+    </string-array>
+
+    <string-array name="statearray">
+        <item>NSW</item>
+        <item>VIC</item>
+        <item>QLD</item>
+        <item>WA</item>
+        <item>SA</item>
+        <item>TAS</item>
+
+    </string-array>
+
+<!--    -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

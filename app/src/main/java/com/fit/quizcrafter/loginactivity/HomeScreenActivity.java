@@ -1,10 +1,8 @@
-package com.fit.quizcrafter.ui.home;
+package com.fit.quizcrafter.loginactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -12,16 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Response;
 import com.fit.quizcrafter.R;
-import com.fit.quizcrafter.api.ApiQuiz;
-import com.fit.quizcrafter.databinding.FragmentHomeBinding;
-import com.fit.quizcrafter.loginactivity.CreateAccountClass;
-import com.fit.quizcrafter.loginactivity.HomeScreenActivity;
-import com.fit.quizcrafter.loginactivity.accountscreen;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,9 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class HomeFragment extends Fragment {
+public class HomeScreenActivity extends AppCompatActivity {
 
-    private FragmentHomeBinding binding;
 
     private FirebaseUser fireBaseUser;
 
@@ -52,26 +42,16 @@ public class HomeFragment extends Fragment {
 
     ImageView ImageForHome;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-//        new ApiQuiz().getRandomQuiz(getActivity().getApplicationContext(), new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                System.out.println(response);
-//            }
-//        });
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.home_screen);
 
 
+        goToProfile = findViewById(R.id.goToprofile);
 
-        goToProfile = binding.goToprofile;
-
-        accountNameFromDataBaseForClass = binding.accountNameFromDataBase;
+        accountNameFromDataBaseForClass = findViewById(R.id.accountNameFromDataBase);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -81,35 +61,21 @@ public class HomeFragment extends Fragment {
 
         if(fireBaseUser == null)
         {
-            Toast.makeText(getContext(), "user details is not on database", Toast.LENGTH_LONG).show();
+            Toast.makeText(HomeScreenActivity.this, "user details is not on database", Toast.LENGTH_LONG).show();
         }
         else{
-            ShowTheAccountName(fireBaseUser);
+                ShowTheAccountName(fireBaseUser);
         }
 
         goToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentToProfile = new Intent(getActivity(), accountscreen.class);
+                Intent intentToProfile = new Intent(HomeScreenActivity.this,accountscreen.class);
                 startActivity(intentToProfile);
             }
         });
 
-
-
-
-
-
-
-        return root;
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
 
     private void ShowTheAccountName(FirebaseUser fireBaseUser) {
         UserID = fireBaseUser.getUid();
@@ -124,13 +90,13 @@ public class HomeFragment extends Fragment {
                 {
                     useForAccountName = createAccountClass.accountName;
                     accountNameFromDataBaseForClass.setText("Hello " + useForAccountName);
+
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "some error happened", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(HomeScreenActivity.this, "some error happened", Toast.LENGTH_LONG).show();
             }
         });
     }
