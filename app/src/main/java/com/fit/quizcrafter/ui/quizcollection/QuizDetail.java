@@ -9,9 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+
 import com.fit.quizcrafter.databinding.FragmentQuizdetailBinding;
 import com.fit.quizcrafter.domain.Quiz;
-import com.fit.quizcrafter.ui.slideshow.SlideshowViewModel;
+
+import com.fit.quizcrafter.ui.createquiz.recyclelist.QuestionViewModel;
 import com.google.gson.Gson;
 
 
@@ -21,28 +23,26 @@ public class QuizDetail extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
 
         binding = FragmentQuizdetailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         String strquiz= QuizDetailArgs.fromBundle(getArguments()).getQuiz();
-
         Quiz quiz = new Gson().fromJson(strquiz,Quiz.class);
-        System.out.println(strquiz);
 
+        binding.quizDetailTitle.setText(quiz.getTitle());
+        binding.quizDetailDesciption.setText(quiz.getDescription());
 
+        QuestionViewModel viewModel = new ViewModelProvider(this).get(QuestionViewModel.class);
+        viewModel.setFlag(true);
+        viewModel.setData(quiz.getQuestionList());
 
         return root;
     }
-
-
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
 }

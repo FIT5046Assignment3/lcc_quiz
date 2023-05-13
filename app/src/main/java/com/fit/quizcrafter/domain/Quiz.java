@@ -1,13 +1,25 @@
 package com.fit.quizcrafter.domain;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.fit.quizcrafter.domain.room.QuestionConverter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Entity(tableName = "quiz")
+@TypeConverters(QuestionConverter.class)
 public class Quiz {
+    @NotNull
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private List<Question> questionList;
     private String title;
     private String description = " quiz desciption";
@@ -53,12 +65,21 @@ public class Quiz {
         return quiz;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Quiz{" +
                 "questionList=" + questionList +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

@@ -33,7 +33,6 @@ public class FirebaseApi {
                 mDatabase.child(collectionName).child(userId).child("1").setValue(quiz);
             }
         });
-
         new ApiQuiz().getQuiz(context, "1", null, null, new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
@@ -45,13 +44,13 @@ public class FirebaseApi {
     }
 
 
-    public static void addQuiz(Quiz quiz,String userId)
+    public static void addQuiz(Quiz quiz,String userId, OnCompleteListener onCompleteListener)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Task task= mDatabase.child(collectionName).child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                mDatabase.child(collectionName).child(userId).child(String.valueOf(task.getResult().getChildrenCount() + 1)).setValue(quiz);
+                mDatabase.child(collectionName).child(userId).child(String.valueOf(task.getResult().getChildrenCount() + 1)).setValue(quiz).addOnCompleteListener(onCompleteListener);
             }
         });
 
@@ -79,3 +78,6 @@ public class FirebaseApi {
     }
 
 }
+
+
+
