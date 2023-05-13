@@ -1,8 +1,5 @@
 package com.fit.quizcrafter.api;
 
-
-
-
 import static com.fit.quizcrafter.domain.Quiz.parseQuiz;
 
 import android.content.Context;
@@ -13,7 +10,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.fit.quizcrafter.domain.Quiz;
-
 
 public class ApiQuiz {
     static String auth = "apiKey=UhbZHI5OLZEFRcRfjqbU8JGAoFp0MLiNtExInlVD";

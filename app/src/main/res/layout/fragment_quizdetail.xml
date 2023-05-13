@@ -20,7 +20,12 @@
         android:height="20dp"
         android:text="des"/>
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_game"
+        android:text="start game"
+        />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/recycle_questionList1"

@@ -43,7 +43,6 @@ public class QuizCollectionViewModel extends ViewModel {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 List<Quiz> quizs = new ArrayList<>();
-                System.out.println("/////////////////////////////////");
                 for(DataSnapshot dataSnapshot: task.getResult().getChildren())
                 {
                     Quiz quiz =  dataSnapshot.getValue(Quiz.class);

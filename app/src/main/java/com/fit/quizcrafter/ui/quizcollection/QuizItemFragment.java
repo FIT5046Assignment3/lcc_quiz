@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import com.google.gson.Gson;
 public class QuizItemFragment extends Fragment {
 
     private QuizCollectionViewModel viewModel ;
+
     public QuizItemFragment() {
         // Required empty public constructor
     }
@@ -78,7 +80,7 @@ public class QuizItemFragment extends Fragment {
 //                            tranform key and quiz detail
                         QuizItemFragmentDirections.ActionQuizItemFragmentToQuizDetail action =
                                 QuizItemFragmentDirections.actionQuizItemFragmentToQuizDetail(new Gson().toJson(quiz));
-                        Navigation.findNavController(view).navigate(action);
+                        Navigation.findNavController(view).navigate((NavDirections) action);
                     }
                 });
             }

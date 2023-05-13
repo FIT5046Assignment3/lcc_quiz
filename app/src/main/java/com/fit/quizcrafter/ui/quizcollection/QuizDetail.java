@@ -37,6 +37,13 @@ public class QuizDetail extends Fragment {
         viewModel.setFlag(true);
         viewModel.setData(quiz.getQuestionList());
 
+        binding.startGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                for lar
+
+            }
+        });
         return root;
     }
 
