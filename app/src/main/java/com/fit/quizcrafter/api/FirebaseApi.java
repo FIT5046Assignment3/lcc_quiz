@@ -21,12 +21,12 @@ public class FirebaseApi {
 
     public static DatabaseReference mDatabase;
 
-    public static String userId = "quizId-1";
     public static String collectionName = "create-quiz";
 
     public static void addQuiz(Quiz quiz,String userId, OnCompleteListener onCompleteListener)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        System.out.println(userId);
         Task task= mDatabase.child(collectionName).child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {

@@ -1,14 +1,13 @@
 package com.fit.quizcrafter.ui.createquiz;
 
-import static com.fit.quizcrafter.api.FirebaseApi.addQuiz;
-import static com.fit.quizcrafter.api.FirebaseApi.userId;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 
 import androidx.annotation.NonNull;
@@ -26,6 +25,10 @@ import com.fit.quizcrafter.ui.createquiz.recyclelist.QuestionListFragment;
 import com.fit.quizcrafter.ui.createquiz.recyclelist.QuestionViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.UUID;
 
@@ -34,6 +37,10 @@ public class CreateQuizFragment extends Fragment  {
 
     private FragmentCreateQuizBinding binding;
     private QuestionViewModel viewModel;
+
+    private FirebaseUser fireBaseUser;
+
+    private FirebaseAuth firebaseAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -69,6 +76,21 @@ public class CreateQuizFragment extends Fragment  {
                 quiz.setKey(UUID.randomUUID().toString());
 
                 QuizWoker.quizList.add(quiz);
+
+
+
+
+//                firebaseAuth = FirebaseAuth.getInstance();
+//
+//                fireBaseUser = firebaseAuth.getCurrentUser();
+//
+//                String UserID = fireBaseUser.getUid();
+//
+//                FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                DatabaseReference questionsRef = database.getReference("create-quiz");
+//                DatabaseReference newQuestionRef = questionsRef.child(UserID).push();
+//
+//                newQuestionRef.setValue(quiz);
 
             }
         });

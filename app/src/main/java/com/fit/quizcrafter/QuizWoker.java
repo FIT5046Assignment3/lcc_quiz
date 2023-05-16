@@ -29,9 +29,16 @@ public class QuizWoker extends Worker {
     public Result doWork() {
         for (Quiz quiz: quizList)
         {
-            addQuiz(quiz, String.valueOf(User.user_id), null);
+            System.out.println(quiz);
+            addQuiz(quiz, String.valueOf(User.user_id),
+                    new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            System.out.println("Complete");
+                        }
+                    });
         }
-
+        quizList = new ArrayList<>();
         return Result.success();
     }
 }

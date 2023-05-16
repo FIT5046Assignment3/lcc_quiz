@@ -1,19 +1,13 @@
 package com.fit.quizcrafter.ui.quizcollection;
 
 import static com.fit.quizcrafter.api.FirebaseApi.getQuizByuserId;
-import static com.fit.quizcrafter.api.FirebaseApi.userId;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.navigation.Navigation;
 
-import com.fit.quizcrafter.R;
 import com.fit.quizcrafter.domain.Quiz;
 import com.fit.quizcrafter.domain.User;
 import com.google.android.gms.tasks.OnCompleteListener;
