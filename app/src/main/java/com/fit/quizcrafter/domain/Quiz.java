@@ -21,12 +21,20 @@ public class Quiz {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private List<Question> questionList;
-    private String title;
+    public String title;
     private String description = " quiz desciption";
+    private String key;
 
     public Quiz() {
         title = "titile" + String.valueOf(new Random().nextInt());
         questionList = new ArrayList<>();
+    }
+
+    public Quiz(int theId, List<Question>qList, String theTitle, String desc){
+        id = theId;
+        questionList = qList;
+        title = theTitle;
+        description = desc;
     }
 
     public List<Question> getQuestionList() {
@@ -73,13 +81,22 @@ public class Quiz {
         this.id = id;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "Quiz{" +
-                "questionList=" + questionList +
+                "id=" + id +
+                ", questionList=" + questionList +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", id='" + id + '\'' +
+                ", key='" + key + '\'' +
                 '}';
     }
 }

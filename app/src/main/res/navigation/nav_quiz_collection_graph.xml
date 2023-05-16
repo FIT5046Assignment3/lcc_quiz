@@ -14,8 +14,8 @@
             app:argType="string"
             app:nullable="true" />
         <action
-            android:id="@+id/action_quizDetail_to_addQuestionDialogFragment"
-            app:destination="@id/addQuestionDialogFragment" />
+            android:id="@+id/action_quizDetail_to_nav_quizWelcome_fragment"
+            app:destination="@id/nav_quizWelcome_fragment" />
     </fragment>
     <fragment
         android:id="@+id/quizItemFragment"
@@ -27,7 +27,50 @@
             app:destination="@id/quizDetail" />
     </fragment>
     <fragment
-        android:id="@+id/addQuestionDialogFragment"
-        android:name="com.fit.quizcrafter.ui.createquiz.AddQuestionDialogFragment"
-        android:label="AddQuestionDialogFragment" />
+        android:id="@+id/nav_quizEndResultModel"
+        android:name="com.fit.quizcrafter.fragment.QuizEndResultModel"
+        android:label="QuizEndResultModel" />
+    <fragment
+        android:id="@+id/nav_quizMcqModel"
+        android:name="com.fit.quizcrafter.fragment.QuizMcqModel"
+        android:label="QuizMcqModel" >
+        <action
+            android:id="@+id/action_nav_quizMcqModel_to_nav_quizWrittenModel"
+            app:destination="@id/nav_quizWrittenModel" />
+        <action
+            android:id="@+id/action_nav_quizMcqModel_to_nav_quizEndResultModel"
+            app:destination="@id/nav_quizEndResultModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_quizWrittenModel"
+        android:name="com.fit.quizcrafter.fragment.QuizWrittenModel"
+        android:label="QuizWrittenModel" >
+        <action
+            android:id="@+id/action_nav_quizWrittenModel_to_nav_quizMcqModel"
+            app:destination="@id/nav_quizMcqModel" />
+        <action
+            android:id="@+id/action_nav_quizWrittenModel_to_nav_quizEndResultModel"
+            app:destination="@id/nav_quizEndResultModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_quizWelcome_fragment"
+        android:name="com.fit.quizcrafter.fragment.QuizWelcomeFragment"
+        android:label="QuizWelcomeFragment" >
+        <action
+            android:id="@+id/action_nav_quizWelcome_fragment_to_nav_quizWrittenModel"
+            app:destination="@id/nav_quizWrittenModel" />
+        <action
+            android:id="@+id/action_nav_quizWelcome_fragment_to_nav_quizMcqModel"
+            app:destination="@id/nav_quizMcqModel" />
+        <action
+            android:id="@+id/action_nav_quizWelcome_fragment_self"
+            app:destination="@id/nav_quizWelcome_fragment" />
+        <action
+            android:id="@+id/action_nav_quizWelcome_fragment_to_quizItemFragment"
+            app:destination="@id/quizItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.fit.quizcrafter.ui.home.HomeFragment"
+        android:label="HomeFragment" />
 </navigation>

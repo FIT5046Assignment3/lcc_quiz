@@ -1,7 +1,5 @@
 package com.fit.quizcrafter.ui.createquiz.recyclelist;
 
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -10,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.fit.quizcrafter.databinding.FragmentQuestionListBinding;
 import com.fit.quizcrafter.domain.Question;
-import com.fit.quizcrafter.ui.quizcollection.QuizItemFragmentDirections;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -36,23 +32,11 @@ public class QuestionListRecyclerViewAdapter extends RecyclerView.Adapter<Questi
         holder.mIdView.setText(String.valueOf(inner_position));
 
         String text = questionViewModel.getQuizs().getValue().get(inner_position).getQuestion();
-        Question question = questionViewModel.getQuizs().getValue().get(inner_position);
         if(text.length() > 30)
         {
             text = text.substring(0,29);
         }
         holder.mContentView.setText(text);
-        // clikc the question to view it
-        holder.mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                view question is here
-
-//                QuizItemFragmentDirections.ActionQuizItemFragmentToQuizDetail action =
-//                        QuizItemFragmentDirections.actionQuizItemFragmentToQuizDetail(new Gson().toJson(question));
-//                Navigation.findNavController(view).navigate((NavDirections) action);
-            }
-        });
         holder.binding.ivItemDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,12 +44,12 @@ public class QuestionListRecyclerViewAdapter extends RecyclerView.Adapter<Questi
                 notifyDataSetChanged();
             }
         });
-
-//       like  delete it
+//       on quizdetail fragment ,
         if(questionViewModel.isFlag())
         {
             holder.binding.ivItemDelete.setVisibility(View.GONE);
         }
+//        go to view question
 
     }
 

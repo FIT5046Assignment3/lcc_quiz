@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -23,7 +22,7 @@ import com.fit.quizcrafter.ui.createquiz.recyclelist.QuestionViewModel;
 import com.google.gson.Gson;
 
 /**
- * A simple {@link Fragment} subclass.
+
  * Use the {@link QuizItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
@@ -80,7 +79,7 @@ public class QuizItemFragment extends Fragment {
 //                            tranform key and quiz detail
                         QuizItemFragmentDirections.ActionQuizItemFragmentToQuizDetail action =
                                 QuizItemFragmentDirections.actionQuizItemFragmentToQuizDetail(new Gson().toJson(quiz));
-                        Navigation.findNavController(view).navigate((NavDirections) action);
+                        Navigation.findNavController(view).navigate(action);
                     }
                 });
             }

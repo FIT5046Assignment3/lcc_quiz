@@ -83,12 +83,11 @@
                 android:layout_height="wrap_content"
                 android:text = ""/>
 
-<!--    <Button-->
-<!--        android:id="@+id/submitPhoto"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="submit your photo"/>-->
-
+            <Button
+                android:id="@+id/mapbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="show my location" />
 
 
 

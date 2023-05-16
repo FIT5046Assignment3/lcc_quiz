@@ -10,7 +10,7 @@ public class CreateAccountClass {
     private String zipinput;
     private String countryinput;
     private String spinnerforgender;
-    private String emailAddress;
+    public String emailAddress;
     private String password;
 
 

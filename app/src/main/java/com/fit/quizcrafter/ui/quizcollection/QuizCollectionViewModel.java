@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.fit.quizcrafter.R;
 import com.fit.quizcrafter.domain.Quiz;
+import com.fit.quizcrafter.domain.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizCollectionViewModel extends ViewModel {
+
     private MutableLiveData<List<Quiz>> quizList;
 
     public LiveData<List<Quiz>> getQuizs()
@@ -37,9 +39,9 @@ public class QuizCollectionViewModel extends ViewModel {
         return quizList;
     }
     private void loadQuizs() {
-        // Do an asynchronous operation to fetch users.
+        // Do an asynchronous operation to fetch quiz.
         //        load data from firebase
-        getQuizByuserId(userId, new OnCompleteListener<DataSnapshot>() {
+        getQuizByuserId(User.user_id, new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 List<Quiz> quizs = new ArrayList<>();
@@ -53,7 +55,4 @@ public class QuizCollectionViewModel extends ViewModel {
         });
 
     }
-
-
-
 }

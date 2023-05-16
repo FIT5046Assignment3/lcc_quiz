@@ -39,6 +39,8 @@ public class accountscreen extends AppCompatActivity {
 
     private Button ClickBackToHomePage;
 
+    private Button mapbtn;
+
     ImageView imageViewForProfile;
     private String UserID;
 
@@ -78,14 +80,15 @@ public class accountscreen extends AppCompatActivity {
             }
         });
 
-//        submitPhoto.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentforSubmitPhoto = new Intent(accountscreen.this, submitPhotoScreen.class);
-//                startActivity(intentforSubmitPhoto);
-//            }
-//        });
+        mapbtn = findViewById(R.id.mapbutton);
+
+        mapbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(accountscreen.this,mapActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ClickBackToHomePage.setOnClickListener(new View.OnClickListener() {
             @Override

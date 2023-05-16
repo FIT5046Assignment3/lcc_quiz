@@ -13,6 +13,12 @@
         android:textSize="20dp"
     android:text="title"/>
 
+    <Button
+        android:id="@+id/launchQuizWelcomeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,12 +26,7 @@
         android:height="20dp"
         android:text="des"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/start_game"
-        android:text="start game"
-        />
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/recycle_questionList1"
