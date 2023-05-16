@@ -118,42 +118,42 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         //load weather image
-//        RetrofitWeather retrofitWeather = getRetrofitService();
-//        Call<ResponseBody> callAsync =
-//                retrofitWeather.getWeatherbyLocation(access_key,"melbourne");
-//        //makes an async request & invokes callback methods when the response returns
-//        callAsync.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-//                if (response.isSuccessful()) {
-//                    try {
-//                        Gson gson = new Gson();
-//                        String str = response.body().string().toString();
-//                        Weather weather = gson.fromJson(str, Weather.class);
-//                        System.out.println(weather.getCurrent());
-//                        if(weather.getCurrent() != null)
-//                        {
-//                            String url = weather.getCurrent().getWeather_icons().get(0);
-//                            ImageLoader imageLoader = VolleyQueue.getInstance(getApplicationContext()).getImageLoader();
-//                            ImageLoader.ImageListener listener = ImageLoader.getImageListener(findViewById(R.id.weather_imageView),
-//                                    R.drawable.ic_launcher_background,
-//                                    R.drawable.ic_launcher_foreground);
-//                            imageLoader.get(url, listener);
-//                        }
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                else {
-//                    Log.i("Error ","Response failed");
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                System.out.println("----------------------Fail to ge Weather");
-//            }
-//        });
+        RetrofitWeather retrofitWeather = getRetrofitService();
+        Call<ResponseBody> callAsync =
+                retrofitWeather.getWeatherbyLocation(access_key,"melbourne");
+        //makes an async request & invokes callback methods when the response returns
+        callAsync.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        Gson gson = new Gson();
+                        String str = response.body().string().toString();
+                        Weather weather = gson.fromJson(str, Weather.class);
+                        System.out.println(weather.getCurrent());
+                        if(weather.getCurrent() != null)
+                        {
+                            String url = weather.getCurrent().getWeather_icons().get(0);
+                            ImageLoader imageLoader = VolleyQueue.getInstance(getApplicationContext()).getImageLoader();
+                            ImageLoader.ImageListener listener = ImageLoader.getImageListener(findViewById(R.id.weather_imageView),
+                                    R.drawable.ic_launcher_background,
+                                    R.drawable.ic_launcher_foreground);
+                            imageLoader.get(url, listener);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    Log.i("Error ","Response failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                System.out.println("----------------------Fail to ge Weather");
+            }
+        });
 
     }
 //for menu
